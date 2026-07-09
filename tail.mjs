@@ -1,0 +1,10 @@
+import { readFileSync } from 'node:fs';
+const html = readFileSync('C:\\Users\\Nibras Nooraldeen\\ZCodeProject\\index.html', 'utf8');
+const lines = html.split('\n');
+console.log('=== TAIL (last 6 lines) ===');
+console.log(lines.slice(-6).join('\n'));
+const idx = lines.findIndex(l => l.includes('App Wrapper'));
+console.log('\n=== around app-wrapper boundary ===');
+for (let i = Math.max(0, idx - 3); i < idx + 3; i++) console.log((i + 1) + ': ' + lines[i]);
+const mainIdx = lines.findIndex(l => l.includes('<main class="main-content"'));
+console.log('\n<main class="main-content"> open @ line', mainIdx + 1);
